@@ -1,35 +1,36 @@
 import React from 'react';
 import {ScrollView, View, Text, StyleSheet, Button} from 'react-native';
-import squares from '../utils/squares';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../navigation/types';
 
-export default function HomeScreen() {
-  interface Person {
-    firstName: string;
-    lastName: string;
-    age?: number;
-  }
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-  function showFullName(person: Person) {
-    console.log(`${person.firstName} ${person.lastName}`);
-  }
-
-  function makePerson(name: string, surname: string): Person {
-    const result = {
-      firstName: name,
-      lastName: surname,
-    };
-    return result;
-  }
-
+export default function HomeScreen({navigation, route}: Props) {
   return (
     <ScrollView contentContainerStyle={styles.screen}>
       <View style={styles.screen}>
         <Text>Home Screen</Text>
+        <Button
+          title="Login"
+          onPress={() => navigation.navigate('Login', {userId: 'u12'})}
+        />
+        <Button
+          title="Chat Room"
+          onPress={() => navigation.navigate('ChatRoom', {roomId: 111})}
+        />
+        <Button
+          title="Profile"
+          onPress={() => navigation.navigate('Profile', {userId: 'u12'})}
+        />
+        <Button
+          title="Settings"
+          onPress={() => navigation.navigate('Settings')}
+        />
       </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {flexGrow: 1, alignItems: 'center', justifyContent: 'center'},
+  screen: {flexGrow: 1, alignItems: 'center', justifyContent: 'space-evenly'},
 });
