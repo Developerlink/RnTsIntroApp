@@ -1,11 +1,11 @@
 import React from 'react';
 import {ScrollView, View, Text, StyleSheet, Button} from 'react-native';
-import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../navigation/types';
+import {RootStackScreenProps} from '../navigation/types';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
-
-export default function HomeScreen({navigation, route}: Props) {
+export default function HomeScreen({
+  navigation,
+  route,
+}: RootStackScreenProps<'Home'> | any) {
   return (
     <ScrollView contentContainerStyle={styles.screen}>
       <View style={styles.screen}>
